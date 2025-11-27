@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  password String?
+  role     String  @default("GUEST")
+
+  participations Participation[]
+}
+
+model Contest {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  access      String    @default("NORMAL")
+  startTime   DateTime?
+  endTime     DateTime?
+  prize       String?
+
+  questions      Question[]
+  participations Participation[]
+}
+
+model Question {
+  id        Int     @id @default(autoincrement())
+  question  String
+  type      String
+  contestId Int
+  contest   Contest @relation(fields: [contestId], references: [id])
+
+  options          Option[]
+  submittedAnswers SubmittedAnswer[]
+}
+
+model Option {
+  id               Int               @id @default(autoincrement())
+  option           String
+  correct          Boolean           @default(false)
+  questionId       Int
+  question         Question          @relation(fields: [questionId], references: [id])
+  submittedAnswers SubmittedAnswer[]
+}
+
+model Participation {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  contestId   Int
+  score       Int       @default(0)
+  status      String    @default("IN_PROGRESS")
+  submittedAt DateTime?
+
+  user    User    @relation(fields: [userId], references: [id])
+  contest Contest @relation(fields: [contestId], references: [id])
+
+  answers SubmittedAnswer[]
+}
+
+model SubmittedAnswer {
+  id              Int @id @default(autoincrement())
+  participationId Int
+  questionId      Int
+  optionId        Int
+
+  participation Participation @relation(fields: [participationId], references: [id])
+  question      Question      @relation(fields: [questionId], references: [id])
+  option        Option        @relation(fields: [optionId], references: [id])
+}
+
+model PrizeHistory {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  contestId Int
+  prize     String?
+  wonAt     DateTime @default(now())
+}
