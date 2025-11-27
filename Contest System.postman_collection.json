@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "7e68067a-9c16-40d2-a701-4b40bc10a113",
+		"name": "Contest System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6570790",
+		"_collection_link": "https://interstellar-star-7419.postman.co/workspace/My-Workspace~3e346711-d9fa-4574-83ca-a9d4cf4cde19/collection/6570790-7e68067a-9c16-40d2-a701-4b40bc10a113?action=share&source=collection_link&creator=6570790"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Test\",\n  \"email\": \"test@mail.com\",\n  \"password\": \"123456\",\n  \"role\": \"VIP\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"signup"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/users/signup \\\n-H \"Content-Type: application/json\" \\\n-d '{\n  \"name\": \"Scriza\",\n  \"email\": \"scriza@mail.com\",\n  \"password\": \"123456\",\n  \"role\": \"VIP\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"test@mail.com\",\n  \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"login"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/users/login \\\n-H \"Content-Type: application/json\" \\\n-d '{\n  \"email\": \"scriza@mail.com\",\n  \"password\": \"123456\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "User Profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRlc3QiLCJyb2xlIjoiVklQIiwiaWF0IjoxNzY0MjM3ODYxLCJleHAiOjE3NjQ4NDI2NjF9.dJd8JIpFc1NFLyUexZ1DoWjt-CBncaxm12pBab1Njr8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/users/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"me"
+					]
+				},
+				"description": "Generated from cURL: curl http://localhost:3000/users/me \\\n-H \"Authorization: Bearer <TOKEN>\"\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Contest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRlc3QiLCJyb2xlIjoiVklQIiwiaWF0IjoxNzY0MjM3ODYxLCJleHAiOjE3NjQ4NDI2NjF9.dJd8JIpFc1NFLyUexZ1DoWjt-CBncaxm12pBab1Njr8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Code Masters\",\n  \"description\": \"Win big by coding\",\n  \"access\": \"NORMAL\",\n  \"startTime\": \"2025-12-01T10:00:00.000Z\",\n  \"endTime\": \"2025-12-05T10:00:00.000Z\",\n  \"prize\": \"MacBook Pro\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/contests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contests"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/contests \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer <TOKEN>\" \\\n-d '{\n  \"title\": \"Code Masters\",\n  \"description\": \"Win big by coding\",\n  \"access\": \"NORMAL\",\n  \"startTime\": \"2025-12-01T10:00:00.000Z\",\n  \"endTime\": \"2025-12-05T10:00:00.000Z\",\n  \"prize\": \"MacBook Pro\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Questions for contest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRlc3QiLCJyb2xlIjoiVklQIiwiaWF0IjoxNzY0MjM3ODYxLCJleHAiOjE3NjQ4NDI2NjF9.dJd8JIpFc1NFLyUexZ1DoWjt-CBncaxm12pBab1Njr8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"question\": \"Which languages run in browser?\",\n  \"type\": \"multi\",\n  \"options\": [\n    {\"text\":\"JavaScript\", \"correct\":true},\n    {\"text\":\"Python\", \"correct\":false},\n    {\"text\":\"HTML\", \"correct\":false},\n    {\"text\":\"WASM\", \"correct\":true}\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/contests/question/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contests",
+						"question",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/contests/question/1 \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer <TOKEN>\" \\\n-d '{\n  \"question\": \"Which languages run in browser?\",\n  \"type\": \"multi\",\n  \"options\": [\n    {\"text\":\"JavaScript\", \"correct\":true},\n    {\"text\":\"Python\", \"correct\":false},\n    {\"text\":\"HTML\", \"correct\":false},\n    {\"text\":\"WASM\", \"correct\":true}\n  ]\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Join Contest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRlc3QiLCJyb2xlIjoiVklQIiwiaWF0IjoxNzY0MjM3ODYxLCJleHAiOjE3NjQ4NDI2NjF9.dJd8JIpFc1NFLyUexZ1DoWjt-CBncaxm12pBab1Njr8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/contests/join/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contests",
+						"join",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/contests/join/1 \\\n-H \"Authorization: Bearer <TOKEN>\"\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Submit Answers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRlc3QiLCJyb2xlIjoiVklQIiwiaWF0IjoxNzY0MjM3ODYxLCJleHAiOjE3NjQ4NDI2NjF9.dJd8JIpFc1NFLyUexZ1DoWjt-CBncaxm12pBab1Njr8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"answers\": [\n    {\"questionId\": 1, \"optionId\": 1},\n    {\"questionId\": 1, \"optionId\": 4}\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/contests/submit/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contests",
+						"submit",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/contests/submit/1 \\\n-H \"Content-Type: application/json\" \\\n-d '{\n  \"answers\": [\n    {\"questionId\": 1, \"optionId\": 1},\n    {\"questionId\": 1, \"optionId\": 4}\n  ]\n}' \\\n-H \"Authorization: Bearer <TOKEN>\"\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Score",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/contests/score/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contests",
+						"score",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/contests/score/1\n"
+			},
+			"response": []
+		},
+		{
+			"name": "View Leaderboard",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/contests/leaderboard/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contests",
+						"leaderboard",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl http://localhost:3000/contests/leaderboard/1\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Award Prize",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRlc3QiLCJyb2xlIjoiVklQIiwiaWF0IjoxNzY0MjM3ODYxLCJleHAiOjE3NjQ4NDI2NjF9.dJd8JIpFc1NFLyUexZ1DoWjt-CBncaxm12pBab1Njr8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/contests/prize/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"contests",
+						"prize",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/contests/prize/1 \\\n-H \"Authorization: Bearer <TOKEN>\"\n"
+			},
+			"response": []
+		}
+	]
+}
